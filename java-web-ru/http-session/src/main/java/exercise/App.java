@@ -16,14 +16,13 @@ public final class App {
 
         // BEGIN
         app.get("/users", ctx -> {
-            var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
-            var per = ctx.queryParamAsClass("per" , Integer.class).getOrDefault(5);
+            Integer page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
+            Integer per = ctx.queryParamAsClass("per" , Integer.class).getOrDefault(5);
 
-            ctx.json(USERS.subList(page * per, page * per));
+            ctx.json(USERS.subList(page * per - 1, page * per));
         });
-            return app;
         // END
-
+        return app;
     }
 
     public static void main(String[] args) {
