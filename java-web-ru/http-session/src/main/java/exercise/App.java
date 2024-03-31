@@ -19,7 +19,7 @@ public final class App {
             Integer page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
             Integer per = ctx.queryParamAsClass("per" , Integer.class).getOrDefault(5);
 
-            ctx.json(USERS.subList(page * per - 1, page * per));
+            ctx.json(USERS.subList(page * per - per, page * per));
         });
         // END
         return app;
