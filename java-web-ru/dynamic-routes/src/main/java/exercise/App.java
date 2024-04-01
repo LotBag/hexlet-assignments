@@ -24,10 +24,10 @@ public final class App {
             for (var company : COMPANIES) {
                 if (company.get("id").equals(param)) {
                     ctx.json(company);
+                    return;
                 }
             }
             throw new NotFoundResponse("Company not found");
-
         });
         // END
 
