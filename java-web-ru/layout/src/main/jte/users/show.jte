@@ -1,9 +1,9 @@
 @import exercise.dto.users.UserPage
-@param UserPage userPage
+@param UserPage page
 
 @template.layout.page(
     content = @`
         <h1>Current user</h1>
-        <h3>${userPage.toString()}</h3>
+        <h3>${page.getUser().getId()}</h3>
     `
 )
