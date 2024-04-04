@@ -1,5 +1,4 @@
 @import gg.jte.Content
-
 @param Content content
 
 <html lang="eng">
