@@ -7,9 +7,9 @@
         <form action="/users" method="get">
             <label>
                 Search
-                <input type="search" name="term" value="${page.getTerm()}">
+                <input type="search" name="term" value="${page.getTerm().toLowerCase()}">
             </label>
-            <input type="submit" value="search">
+            <input type="submit" value="POGnali">
         </form>
         <div>
             @for(var user : page.getUsersList())
