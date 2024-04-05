@@ -7,7 +7,7 @@
         <form action="/users" method="get">
             <label>
                 Search
-                <input type="search" name="term" value="${page.getTerm().toLowerCase()}">
+                <input type="search" name="term" value="${page.getTerm()}">
             </label>
             <input type="submit" value="POGnali">
         </form>
