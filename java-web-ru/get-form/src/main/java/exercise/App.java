@@ -1,6 +1,9 @@
 package exercise;
 
 import io.javalin.Javalin;
+
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
@@ -33,7 +36,7 @@ public final class App {
             }
 
             var page = new UsersPage(resultList, term);
-            ctx.render("/users/index.jte", model(page, "page"));
+            ctx.render("users/index.jte", Collections.singletonMap("page", page));
         });
         // END
 
