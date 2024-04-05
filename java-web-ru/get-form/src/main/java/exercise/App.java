@@ -28,9 +28,10 @@ public final class App {
         app.get("/users", ctx -> {
             var term = ctx.queryParam("term");
             List<User> resultList;
+
             if (term != null) {
                 resultList = USERS.stream()
-                        .filter(userName -> userName.getFirstName().toLowerCase().startsWith(term.toLowerCase())).toList();
+                        .filter(userName -> StringUtils.containsAnyIgnoreCase(userName.getFirstName(), term)).toList();
             } else {
                 resultList = USERS;
             }
