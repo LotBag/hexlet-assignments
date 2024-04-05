@@ -30,7 +30,7 @@ public final class App {
             List<User> resultList;
             if (term != null) {
                 resultList = USERS.stream()
-                        .filter(userName -> userName.getFirstName().toLowerCase().startsWith(term)).toList();
+                        .filter(userName -> userName.getFirstName().toLowerCase().startsWith(term.toLowerCase())).toList();
             } else {
                 resultList = USERS;
             }
