@@ -26,6 +26,7 @@
                     <input type="password" name="password">
                 </label>
             </div>
+            <input type="submit" name="Register">
         </form>
     `
 )
