@@ -44,7 +44,7 @@ public final class App {
                         .check(value -> value.length() > 2,
                                 "Название не должно быть короче двух символов")
                         .check(value -> !ArticleRepository.existsByTitle(value),
-                                "Статья с таким названием уже существует")
+                                "Статья с таким названием существует")
                         .get();
 
 
