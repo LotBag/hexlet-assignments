@@ -39,28 +39,27 @@ public final class App {
         });
 
         app.post("/articles", ctx -> {
+            var lengthTitleError = "Название не должно быть короче двух символов";
             try {
-                String title = ctx.formParamAsClass("title", String.class)
-                        .check(value -> value.length() > 2,
-                                "Название не должно быть короче двух символов")
-                        .check(value -> !ArticleRepository.existsByTitle(value),
-                                "Статья с таким названием существует")
+                var title = ctx.formParamAsClass("title", String.class)
+                        .check(value -> value.length() > 2, "Название не должно быть короче двух символов")
+                        .check(value -> !ArticleRepository.existsByTitle(value), "Статья с таким названием существует")
                         .get();
 
 
-                String content = ctx.formParamAsClass("content", String.class)
-                        .check(value -> value.length() > 10,
-                           "Статья должна быть не короче 10 символов")
+                var content = ctx.formParamAsClass("content", String.class)
+                        .check(value -> value.length() > 10, "Статья должна быть не короче 10 символов")
                         .get();
 
                 var articles = new Article(title, content);
                 ArticleRepository.save(articles);
                 ctx.redirect("/articles");
             } catch (ValidationException e) {
+
                 String title = ctx.formParam("title");
                 String content = ctx.formParam("content");
                 var page = new BuildArticlePage(title, content, e.getErrors());
-                ctx.render("articles/build.jte", model("page", page));
+                ctx.render("articles/build.jte", Collections.singletonMap("page", page)).status(422);
             }
 
         });
