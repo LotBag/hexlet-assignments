@@ -2,6 +2,8 @@ package exercise;
 
 import io.javalin.Javalin;
 import io.javalin.validation.ValidationException;
+
+import java.util.Collections;
 import java.util.List;
 import exercise.model.Article;
 import exercise.dto.articles.ArticlesPage;
@@ -32,7 +34,8 @@ public final class App {
 
         // BEGIN
         app.get("/articles/build" , ctx -> {
-            ctx.render("articles/build.jte");
+            var page = new BuildArticlePage();
+            ctx.render("articles/build.jte", Collections.singletonMap("page", page));
         });
 
         app.post("/articles", ctx -> {
