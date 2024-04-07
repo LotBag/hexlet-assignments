@@ -18,12 +18,8 @@ class AppTest {
     private static Javalin app;
     private static String baseUrl;
 
-
-
     @Test
     void test() {
         assertThat("a".equals("a"));
     }
-
-
 }

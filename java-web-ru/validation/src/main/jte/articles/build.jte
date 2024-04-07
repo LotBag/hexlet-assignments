@@ -5,21 +5,23 @@
 
     <div>
         @if(page.getErrors() != null)
+            <ul>
                 @for(var validator : page.getErrors().values())
                     @for(var error : validator)
                         <li>${error.getMessage()}</li>
                     @endfor
                 @endfor
+            </ul>
         @endif
     </div>
     <form action="/articles" method="post">
         <label>
             Articles title
-            <input type="text" required name="title">
+            <input type="text" required name="title" value="${page.getTitle()}">
         </label>
         <label>
             Articles content
-            <input type="text" required name="content">
+            <input type="text" required name="content" value="${page.getContent()}">
         </label>
         <input type="submit" name="create">
     </form>
