@@ -43,7 +43,7 @@ public final class App {
                 String title = ctx.formParamAsClass("title", String.class)
                         .check(value -> value.length() > 2,
                                 "Название не должно быть короче двух символов")
-                        .check(value -> ArticleRepository.findByTitle(value).isEmpty(),
+                        .check(value -> !ArticleRepository.existsByTitle(value),
                                 "Статья с таким названием уже существует")
                         .get();
 
