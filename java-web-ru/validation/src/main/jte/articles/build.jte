@@ -2,17 +2,16 @@
 @param BuildArticlePage page
 
 @template.layout.page(content = @`
-    @if (page.getErrors() != null)
-        <ul>
-            @for(var errorList : page.getErrors().values())
-                @for(var errors : errorList)
-                    <li>
-                        ${errors.getMessage()}
-                    </li>
+
+    <div>
+        @if(page.getErrors() != null)
+                @for(var validator : page.getErrors().values())
+                    @for(var error : validator)
+                        <li>${error.getMessage()}</li>
+                    @endfor
                 @endfor
-            @endfor
-        </ul>
-    @endif
+        @endif
+    </div>
     <form action="/articles" method="post">
         <label>
             Articles title

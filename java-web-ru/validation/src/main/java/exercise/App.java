@@ -39,7 +39,6 @@ public final class App {
         });
 
         app.post("/articles", ctx -> {
-            var lengthTitleError = "Название не должно быть короче двух символов";
             try {
                 var title = ctx.formParamAsClass("title", String.class)
                         .check(value -> value.length() > 2, "Название не должно быть короче двух символов")
@@ -59,7 +58,7 @@ public final class App {
                 String title = ctx.formParam("title");
                 String content = ctx.formParam("content");
                 var page = new BuildArticlePage(title, content, e.getErrors());
-                ctx.render("articles/build.jte", Collections.singletonMap("page", page)).status(422);
+                ctx.render("articles/build.jte", Collections.singletonMap("page", page));
             }
 
         });
