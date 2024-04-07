@@ -1,8 +1,7 @@
 @import exercise.dto.articles.BuildArticlePage
 @param BuildArticlePage page
 
-@if
-    (page.getErrors() != null)
+@if (page.getErrors() != null)
         <ul>
             @for(var errorList : page.getErrors().values())
                 @for(var errors : errorList)
