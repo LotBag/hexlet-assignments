@@ -29,8 +29,7 @@ public class UsersController {
 
         User user = new User(firstName, lastName, email, encryptPassword, token);
         UserRepository.save(user);
-        Long id = user.getId();
-        ctx.redirect(NamedRoutes.userPath(id));
+        ctx.redirect(NamedRoutes.userPath(user.getId()));
     }
 
     public static void show(Context ctx) {
@@ -39,7 +38,7 @@ public class UsersController {
                 .orElseThrow(() -> new NotFoundResponse("Users not found"));
         var token = ctx.cookie("token");
 
-        if (token.equals(user.getToken())) {
+        if (!token.equals(user.getToken())) {
             ctx.redirect(NamedRoutes.buildUserPath());
         } else {
             UserPage page = new UserPage(user);
