@@ -41,10 +41,10 @@ public class UsersController {
 
         if (token.equals(user.getToken())) {
             ctx.redirect(NamedRoutes.buildUserPath());
+        } else {
+            UserPage page = new UserPage(user);
+            ctx.render("users/show.jte", model("page", page));
         }
-
-        UserPage page = new UserPage(user);
-        ctx.render("users/show.jte", model("page", page));
     }
     // END
 }
