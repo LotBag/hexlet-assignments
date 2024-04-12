@@ -12,10 +12,10 @@
     <div>
         <form action="${NamedRoutes.loginPath()}" method="post">
             <label>
-                <input type="text" PLACEHOLDER="Nickname" name="name">
+                <input type="text" placeholder="Nickname" name="name">
             </label>
             <label>
-                <input type="password" PLACEHOLDER="Password" required name="password">
+                <input type="password" placeholder="Password" required name="password">
             </label>
             <input type="submit" name="Login" value="Login">
         </form>

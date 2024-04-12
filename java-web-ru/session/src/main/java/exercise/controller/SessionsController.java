@@ -18,7 +18,7 @@ public class SessionsController {
         ctx.render("index.jte", model("page", page));
     }
     public static void build(Context ctx) {
-        var page = new LoginPage("","");
+        LoginPage page = new LoginPage("","");
         ctx.render("build.jte", model("page", page));
     }
 
