@@ -27,8 +27,8 @@ class AppTest {
         HttpResponse<String> response1 = Unirest.get(baseUrl + "/").asString();
         assertThat(response1.getStatus()).isEqualTo(200);
         var body1 = response1.getBody();
-        assertThat(body1).contains("Войти");
-        assertThat(body1).doesNotContain("Выйти");
+        assertThat(body1).contains("Login");
+        assertThat(body1).doesNotContain("Logout");
 
         HttpResponse<String> response2 = Unirest
             .get(baseUrl + "/sessions/build").asString();
@@ -45,8 +45,8 @@ class AppTest {
         HttpResponse<String> response3 = Unirest.get(baseUrl + "/").asString();
         var body3 = response3.getBody();
         assertThat(response3.getStatus()).isEqualTo(200);
-        assertThat(body3).contains("Выйти");
-        assertThat(body3).doesNotContain("Войти");
+        assertThat(body3).contains("Logout");
+        assertThat(body3).doesNotContain("Login");
         assertThat(body3).contains("admin");
 
         HttpResponse<String> responseDelete = Unirest
@@ -56,8 +56,8 @@ class AppTest {
 
         HttpResponse<String> response4 = Unirest.get(baseUrl + "/").asString();
         var body4 = response4.getBody();
-        assertThat(body4).contains("Войти");
-        assertThat(body4).doesNotContain("Выйти");
+        assertThat(body4).contains("Login");
+        assertThat(body4).doesNotContain("Logout");
     }
 
     @Test
