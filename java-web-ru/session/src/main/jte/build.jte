@@ -5,7 +5,7 @@
 
 @template.layout.page(content = @`
     <div>
-        @if(!page.getError() == null)
+        @if(page.getError() != null)
             ${page.getError()}
         @endif
     </div>
