@@ -15,6 +15,10 @@ public final class App {
             config.fileRenderer(new JavalinJte());
         });
 
+        app.before(ctx -> {
+            ctx.contentType("text/html; charset=utf-8");
+        });
+
         app.get(NamedRoutes.rootPath(), RootController::index);
 
         app.get(NamedRoutes.buildPostPath(), PostsController::build);

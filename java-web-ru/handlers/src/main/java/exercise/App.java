@@ -14,7 +14,7 @@ public final class App {
         });
 
         List<String> phones = Data.getPhones();
-        app.get("/phones", ctx -> ctx.json(phones));
+        app.get("/hello", ctx -> ctx.queryParamAsClass("page", Integer.class).getOrDefault(1));
 
         List<String> domains = Data.getDomains();
         app.get("/domains", ctx -> ctx.json(domains));
@@ -25,6 +25,6 @@ public final class App {
 
     public static void main(String[] args) {
         Javalin app = getApp();
-        app.start(7070);
+        app.start(7071);
     }
 }

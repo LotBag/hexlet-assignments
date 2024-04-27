@@ -66,11 +66,11 @@ public class PostsController {
     public static void editPost(Context ctx) {
         Long id = ctx.pathParamAsClass("id", Long.class).get();
         try {
-            String name = ctx.formParamAsClass("name", String.class)
+            var name = ctx.formParamAsClass("name", String.class)
                     .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
                     .get();
 
-            String body = ctx.formParamAsClass("body", String.class)
+            var body = ctx.formParamAsClass("body", String.class)
                     .check(value -> value.length() >= 10, "Пост должен быть не короче 10 символов")
                     .get();
 

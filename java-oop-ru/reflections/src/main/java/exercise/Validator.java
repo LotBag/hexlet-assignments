@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 // BEGIN
 public class Validator {
@@ -26,5 +27,9 @@ public class Validator {
         }
 
         return resultList;
+    }
+
+    public static Map advancedValidate() {
+
     }
 }
