@@ -48,7 +48,6 @@ public class ProductsController {
         var maybeProduct = productRepository.findById(id).
                 orElseThrow(() -> new ResourceNotFoundException("Product with id " + id + " not found"));
 
-        maybeProduct.setId(data.getId());
         maybeProduct.setPrice(data.getPrice());
         maybeProduct.setTitle(data.getTitle());
 
