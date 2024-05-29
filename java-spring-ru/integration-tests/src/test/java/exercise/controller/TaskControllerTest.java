@@ -89,18 +89,21 @@ class ApplicationTest {
     }
 
     @Test
-    public void testCreateTask() throws Exception {
-        var testTask = generateTask();
+    public void testCreate() throws Exception {
+        var data = generateTask();
 
-        mockMvc.perform(post("/tasks").contentType(MediaType.APPLICATION_JSON)
-                        .content(om.writeValueAsString(testTask)))
+        var request = post("/tasks")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(om.writeValueAsString(data));
+
+        mockMvc.perform(request)
                 .andExpect(status().isCreated());
 
-        var createdTask = taskRepository.findByTitle(testTask.getTitle()).get();
+        var task = taskRepository.findByTitle(data.getTitle()).get();
 
-        assertThat(createdTask).isNotNull();
-        assertThat(createdTask.getTitle()).isEqualTo(testTask.getTitle());
-        assertThat(createdTask.getDescription()).isEqualTo(testTask.getDescription());
+        assertThat(task).isNotNull();
+        assertThat(task.getTitle()).isEqualTo(data.getTitle());
+        assertThat(task.getDescription()).isEqualTo(data.getDescription());
     }
 
     @Test
