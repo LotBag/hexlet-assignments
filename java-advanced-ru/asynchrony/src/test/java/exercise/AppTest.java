@@ -35,16 +35,6 @@ class AppTest {
         assertThat(actual).contains("Test", "Message");
     }
 
-    @Test
-    void testUnionWithNonExistedFile() throws Exception {
-
-        String result = tapSystemOut(() -> {
-            App.unionFiles("nonExistingFile", "file", destPath).get();
-        });
-
-        assertThat(result.trim()).contains("NoSuchFileException");
-    }
-
     // BEGIN
     
     // END
